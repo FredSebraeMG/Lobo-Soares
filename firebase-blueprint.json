@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "Work": {
+      "title": "Obra de Arte ou Projeto",
+      "description": "Representa uma obra de arte, projeto arquitetônico ou mídia no portfólio.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Título da obra" },
+        "description": { "type": "string", "description": "Descrição detalhada" },
+        "mediaType": { "type": "string", "enum": ["text", "image", "audio", "video"], "description": "Tipo de mídia" },
+        "mediaUrl": { "type": "string", "description": "URL da mídia (imagem, vídeo, áudio)" },
+        "category": { "type": "string", "description": "Categoria (Pintura, Desenho, Arquitetura, etc.)" },
+        "price": { "type": "number", "description": "Preço para venda (opcional)" },
+        "externalLink": { "type": "string", "description": "Link para e-commerce externo" },
+        "isActive": { "type": "boolean", "description": "Se a obra está visível no site" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Data de criação do registro" }
+      },
+      "required": ["title", "mediaType", "mediaUrl", "category", "isActive"]
+    },
+    "Category": {
+      "title": "Categoria",
+      "description": "Categorias para filtrar as obras.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Nome da categoria" },
+        "slug": { "type": "string", "description": "Slug para URL" }
+      },
+      "required": ["name", "slug"]
+    },
+    "Profile": {
+      "title": "Perfil do Artista",
+      "description": "Informações biográficas e de contato.",
+      "type": "object",
+      "properties": {
+        "bio": { "type": "string", "description": "Biografia completa em Markdown" },
+        "photoUrl": { "type": "string", "description": "URL da foto de perfil" },
+        "email": { "type": "string", "description": "E-mail de contato" },
+        "phone": { "type": "string", "description": "Telefone de contato" },
+        "address": { "type": "string", "description": "Endereço" }
+      },
+      "required": ["bio", "email"]
+    }
+  },
+  "firestore": {
+    "/works/{workId}": {
+      "schema": "Work",
+      "description": "Coleção de obras e projetos."
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Coleção de categorias."
+    },
+    "/profiles/{profileId}": {
+      "schema": "Profile",
+      "description": "Informações do perfil (geralmente um único documento)."
+    }
+  }
+}
