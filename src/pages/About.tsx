@@ -65,9 +65,12 @@ const About = () => {
                 </div>
               </li>
             </ul>
-            <button className="w-full flex items-center justify-center space-x-3 border border-paper/20 py-4 rounded-full text-xs uppercase tracking-widest hover:bg-paper hover:text-ink transition-all">
-              <Download size={16} />
-              <span>Baixar Currículo Lattes</span>
+            <button 
+            onClick={() => window.open("http://lattes.cnpq.br/7531079511157224", "_blank")}
+            className="w-full flex items-center justify-center space-x-3 border border-paper/20 py-4 rounded-full text-xs uppercase tracking-widest hover:bg-paper hover:text-ink transition-all"
+            >
+            <Download size={16} />
+            <span>Baixar Currículo Lattes</span>
             </button>
 
             <div className="pt-8 border-t border-paper/10 flex justify-center space-x-8">
